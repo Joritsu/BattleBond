@@ -673,11 +673,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 56ac189e-a95a-46b6-9763-3bfd6b925d61
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BattleBond 2025-02-21_11-38-44
-  organizationId: unity_972cc8f703782ee604a1
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
