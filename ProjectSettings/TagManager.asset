@@ -7,11 +7,12 @@ TagManager:
   - Damage_source
   - Obstacle
   - Arena
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Arena
   - Water
   - UI
   - 
