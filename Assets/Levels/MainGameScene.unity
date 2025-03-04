@@ -1524,7 +1524,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1832390971}
   - component: {fileID: 1832390975}
-  - component: {fileID: 1832390974}
   - component: {fileID: 1832390973}
   - component: {fileID: 1832390972}
   m_Layer: 5
@@ -1598,7 +1597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832390974}
+      - m_Target: {fileID: 2019314853}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -1640,20 +1639,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1832390974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832390970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cee2ead5f13df8449cfffc447b83079, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InGameMenuPanel: {fileID: 1540286585}
-  PauseButton: {fileID: 1970909453}
 --- !u!222 &1832390975
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1854,7 +1839,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970909454}
-  - component: {fileID: 1970909458}
   - component: {fileID: 1970909457}
   - component: {fileID: 1970909456}
   - component: {fileID: 1970909455}
@@ -1929,7 +1913,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1970909458}
+      - m_Target: {fileID: 2019314853}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
@@ -1979,20 +1963,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970909453}
   m_CullTransparentMesh: 1
---- !u!114 &1970909458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970909453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cee2ead5f13df8449cfffc447b83079, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InGameMenuPanel: {fileID: 1540286585}
-  PauseButton: {fileID: 1970909453}
 --- !u!1 &1974208893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,6 +2008,7 @@ GameObject:
   - component: {fileID: 2019314851}
   - component: {fileID: 2019314850}
   - component: {fileID: 2019314849}
+  - component: {fileID: 2019314853}
   m_Layer: 5
   m_Name: UI Elements
   m_TagString: Untagged
@@ -2129,6 +2100,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2019314853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019314848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cee2ead5f13df8449cfffc447b83079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InGameMenuPanel: {fileID: 1540286585}
+  PauseButton: {fileID: 1970909453}
 --- !u!1 &2035787360
 GameObject:
   m_ObjectHideFlags: 0
