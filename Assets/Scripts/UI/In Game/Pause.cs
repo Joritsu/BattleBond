@@ -16,6 +16,18 @@ public class Pause : MonoBehaviour
     }
 
 
+    void Update()
+    {
+        // Check if the Escape key was pressed this frame
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Place your code here - this code will run when Esc is pressed.
+            Debug.Log("Escape key pressed!");
+
+            // For example, toggle a pause menu:
+            TogglePause();
+        }
+    }
     public void ResumeGame()
     {
         InGameMenuPanel.SetActive(false);
