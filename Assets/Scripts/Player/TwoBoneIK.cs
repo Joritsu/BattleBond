@@ -53,11 +53,13 @@ public class TwoBoneIKCorrected : MonoBehaviour
         // Rotate the forearm
         float forearmRotation = shoulderAngle * Mathf.Rad2Deg + (180f - elbowAngleDeg);
         forearm.rotation = Quaternion.Euler(0f, 0f, forearmRotation);
-        
-        // Optionally update the hand position
         if (hand != null)
         {
-            hand.position = forearm.position + (Vector3)(forearm.right * forearmLength);
+            // This will place the hand at the point (forearmLength, 0, 0) in the forearm's local space.
+            hand.position = forearm.TransformPoint(new Vector3(forearmLength, 0f, 0f));
         }
+
+
+
     }
 }

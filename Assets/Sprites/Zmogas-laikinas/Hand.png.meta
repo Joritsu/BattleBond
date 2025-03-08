@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4784370f2eb85364585eaaca57367bfe
+guid: fbb734c1f3fd676468d3a99f0c0d21ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7146182025884576630
-    second: ForeArm_0
+      213: 140433255743585067
+    second: Hand_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ForeArm_0
+      name: Hand_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 6
-        width: 142
-        height: 118
-      alignment: 9
-      pivot: {x: 0.046165895, y: 0.4293786}
+        x: 0
+        y: 10
+        width: 67
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a845ede3f49a3dc90800000000000000
-      internalID: -7146182025884576630
+      spriteID: b2b7f335d4be2f100800000000000000
+      internalID: 140433255743585067
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d212a841e26813d43a28acd6bbc27c88
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ForeArm_0: -7146182025884576630
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
