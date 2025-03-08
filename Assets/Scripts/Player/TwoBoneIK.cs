@@ -15,8 +15,8 @@ public class TwoBoneIKCorrected : MonoBehaviour
     public float forearmLength = 1f;
 
     [Header("Elbow Limits (degrees)")]
-    public float minElbowAngle = 0f;   // fully extended
-    public float maxElbowAngle = 135f; // fairly bent
+    public float minElbowAngle = 75f;   // fully extended
+    public float maxElbowAngle = 180f; // fairly bent
 
     void Update()
     {
