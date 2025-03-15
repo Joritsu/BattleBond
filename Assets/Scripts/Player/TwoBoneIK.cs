@@ -17,6 +17,9 @@ public class TwoBoneIKCorrected : MonoBehaviour
     [Header("Elbow Limits (degrees)")]
     public float minElbowAngle = 75f;   // fully extended
     public float maxElbowAngle = 180f; // fairly bent
+    [Header("Arm Scale")]
+    public float desiredScale = 1.1f;  // or whatever value you want
+
 
     void Update()
     {
@@ -58,6 +61,11 @@ public class TwoBoneIKCorrected : MonoBehaviour
             // This will place the hand at the point (forearmLength, 0, 0) in the forearm's local space.
             hand.position = forearm.TransformPoint(new Vector3(forearmLength, 0f, 0f));
         }
+
+        upperArm.localScale = Vector3.one * desiredScale;
+        forearm.localScale = Vector3.one * desiredScale;
+        if (hand != null)
+            hand.localScale = Vector3.one * desiredScale;
 
 
 
