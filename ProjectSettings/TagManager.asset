@@ -15,9 +15,9 @@ TagManager:
   - Arena
   - Water
   - UI
-  - grabbableLayer
-  - Player
-  - 
+  - Grab
+  - weaponLayer
+  - PlayerLayer
   - 
   - 
   - 
