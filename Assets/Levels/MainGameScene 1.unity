@@ -161,7 +161,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -2297,6 +2297,7 @@ MonoBehaviour:
   forearmLength: 1.5
   minElbowAngle: 65
   maxElbowAngle: 180
+  desiredScale: 1.1
 --- !u!1 &1948462434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,11 +2598,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3121,7 +3122,8 @@ MonoBehaviour:
     m_Bits: 64
   grabOffset: {x: 1, y: 0, z: 0}
   playerCollider: {fileID: 1850791731}
-  additionalIgnoreColliders: []
+  additionalIgnoreColliders:
+  - {fileID: 1002956190}
 --- !u!50 &2105650457
 Rigidbody2D:
   serializedVersion: 5
