@@ -38,16 +38,25 @@ public class EnemyAI : MonoBehaviour
     {
         // Calculate distance to the player.
         float distance = Vector2.Distance(transform.position, player.position);
+
+        // Get the PatrolBehavior component (if attached)
+        PatrolBehavior patrol = GetComponent<PatrolBehavior>();
+
+        // If the player is within the detection radius, disable patrol and chase the player.
         if (distance <= detectionRadius)
         {
+            if (patrol != null)
+                patrol.enabled = false;  // Disable patrol behavior.
             ChasePlayer();
         }
         else
         {
-            Idle();
+            // If the player is not detected, enable patrol behavior.
+            if (patrol != null)
+                patrol.enabled = true;
+            //Idle();  // Or let the PatrolBehavior script handle movement.
         }
     }
-
     /// <summary>
     /// When chasing, move horizontally toward the player.
     /// Use a raycast from the groundCheck position in the horizontal direction
