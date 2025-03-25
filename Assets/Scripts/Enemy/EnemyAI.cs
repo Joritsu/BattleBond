@@ -39,14 +39,19 @@ public class EnemyAI : MonoBehaviour
         // Calculate distance to the player.
         float distance = Vector2.Distance(transform.position, player.position);
 
-        // Get the PatrolBehavior component (if attached)
+        // Get the PatrolBehavior and EnemyPathfinder components (if attached).
         PatrolBehavior patrol = GetComponent<PatrolBehavior>();
+        EnemyPathfinder pathfinder = GetComponent<EnemyPathfinder>();
 
-        // If the player is within the detection radius, disable patrol and chase the player.
+        // If the player is within the detection radius, disable patrol and pathfinding for patrolling,
+        // then run your chase/jump logic (or enable the EnemyPathfinder component if you're using A* pathfinding).
         if (distance <= detectionRadius)
         {
             if (patrol != null)
-                patrol.enabled = false;  // Disable patrol behavior.
+                patrol.enabled = false;
+            if (pathfinder != null)
+                pathfinder.enabled = true; // Enable pathfinding chase behavior.
+            
             ChasePlayer();
         }
         else
@@ -54,9 +59,14 @@ public class EnemyAI : MonoBehaviour
             // If the player is not detected, enable patrol behavior.
             if (patrol != null)
                 patrol.enabled = true;
-            //Idle();  // Or let the PatrolBehavior script handle movement.
+            if (pathfinder != null)
+                pathfinder.enabled = false; // Disable pathfinding chase behavior.
+            
+            // You can optionally call Idle() here if you need a default movement,
+            // but if PatrolBehavior handles movement, leave it alone.
         }
     }
+
     /// <summary>
     /// When chasing, move horizontally toward the player.
     /// Use a raycast from the groundCheck position in the horizontal direction
@@ -93,6 +103,14 @@ public class EnemyAI : MonoBehaviour
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
     }
 
+        /// <summary>
+    /// Applies upward force to make the enemy jump.
+    /// </summary>
+    void Jump()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+    }
+
     /// <summary>
     /// Idle state: stop horizontal movement.
     /// </summary>
@@ -101,13 +119,6 @@ public class EnemyAI : MonoBehaviour
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
     }
 
-    /// <summary>
-    /// Applies upward force to make the enemy jump.
-    /// </summary>
-    void Jump()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-    }
 
     void FixedUpdate()
     {
