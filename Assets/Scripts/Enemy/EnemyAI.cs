@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     // Boolean to store if enemy is currently on the ground.
     private bool isGrounded;
+    // Flag to prevent multiple jump coroutines.
+    private bool isJumping = false;
 
     void Start()
     {
@@ -43,8 +46,7 @@ public class EnemyAI : MonoBehaviour
         PatrolBehavior patrol = GetComponent<PatrolBehavior>();
         EnemyPathfinder pathfinder = GetComponent<EnemyPathfinder>();
 
-        // If the player is within the detection radius, disable patrol and pathfinding for patrolling,
-        // then run your chase/jump logic (or enable the EnemyPathfinder component if you're using A* pathfinding).
+        // If the player is within the detection radius, disable patrol and enable pathfinding.
         if (distance <= detectionRadius)
         {
             if (patrol != null)
@@ -56,54 +58,72 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            // If the player is not detected, enable patrol behavior.
+            // If the player is not detected, enable patrol and disable pathfinding.
             if (patrol != null)
                 patrol.enabled = true;
-            if (pathfinder != null)
-                pathfinder.enabled = false; // Disable pathfinding chase behavior.
-            
-            // You can optionally call Idle() here if you need a default movement,
-            // but if PatrolBehavior handles movement, leave it alone.
+            // if (pathfinder != null)
+            //     pathfinder.enabled = false;
         }
     }
 
     /// <summary>
     /// When chasing, move horizontally toward the player.
-    /// Use a raycast from the groundCheck position in the horizontal direction
-    /// to detect obstacles; if one is detected and the enemy is grounded, jump.
+    /// Uses a raycast from groundCheck to detect obstacles; if one is detected and the enemy is grounded,
+    /// starts a jump coroutine.
     /// </summary>
     void ChasePlayer()
     {
         // Determine horizontal direction toward the player.
         Vector2 direction = (player.position - transform.position).normalized;
-        //Optionally flip the enemy sprite if needed.
+
+        // Flip the enemy sprite using SpriteRenderer.flipX.
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            if (direction.x < 0)
-                sr.flipX = true;
-            else if (direction.x > 0)
-                sr.flipX = false;
+            sr.flipX = direction.x < 0;
         }
-
 
         // Perform a raycast from groundCheck in the horizontal direction.
         Vector2 rayOrigin = groundCheck.position;
-        // Only consider horizontal direction (x component) for obstacle detection.
-        Vector2 rayDirection = new Vector2(direction.x, 0);
+        Vector2 rayDirection = new Vector2(Mathf.Sign(direction.x), 0);
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, obstacleDetectionDistance, groundLayer);
 
-        // If an obstacle is detected ahead and the enemy is on the ground, jump.
-        if (hit.collider != null && isGrounded)
+        // If an obstacle is detected and enemy is on the ground and not already jumping, start jump coroutine.
+        if (hit.collider != null && isGrounded && !isJumping)
         {
-            Jump();
+            StartCoroutine(JumpAndResumePathfinding());
         }
 
         // Set horizontal velocity toward the player.
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
     }
 
-        /// <summary>
+    /// <summary>
+    /// Coroutine that makes the enemy jump and re-enables pathfinding after landing.
+    /// </summary>
+    IEnumerator JumpAndResumePathfinding()
+    {
+        isJumping = true;
+        // Temporarily disable pathfinding.
+        EnemyPathfinder pathfinder = GetComponent<EnemyPathfinder>();
+        if (pathfinder != null)
+            pathfinder.enabled = false;
+
+        // Perform the jump.
+        Jump();
+
+        // Wait until the enemy is no longer grounded (i.e., is airborne).
+        yield return new WaitWhile(() => isGrounded);
+        // Then wait until the enemy lands (is grounded again).
+        yield return new WaitUntil(() => isGrounded);
+
+        // Re-enable pathfinding after landing.
+        if (pathfinder != null)
+            pathfinder.enabled = true;
+        isJumping = false;
+    }
+
+    /// <summary>
     /// Applies upward force to make the enemy jump.
     /// </summary>
     void Jump()
@@ -111,40 +131,29 @@ public class EnemyAI : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
-    /// <summary>
-    /// Idle state: stop horizontal movement.
-    /// </summary>
-    void Idle()
-    {
-        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-    }
-
-
     void FixedUpdate()
     {
         // Update the grounded status using an OverlapCircle.
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    // Draw gizmos to visualize the detection radius, ground check area, and obstacle raycast.
+    // Draw gizmos to visualize the detection radius, ground check, and obstacle ray.
     void OnDrawGizmosSelected()
     {
-        // Draw the detection radius around the enemy.
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
-        // Draw the ground check circle.
         if (groundCheck != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
 
-            // Draw the obstacle detection ray.
             Gizmos.color = Color.blue;
             Vector2 rayStart = groundCheck.position;
             Vector2 rayDir = Vector2.right * obstacleDetectionDistance;
-            // If the enemy is flipped, invert the ray.
-            if (transform.localScale.x < 0)
+            // Use sprite flipping to determine ray direction.
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr != null && sr.flipX)
                 rayDir = Vector2.left * obstacleDetectionDistance;
             Gizmos.DrawLine(rayStart, rayStart + rayDir);
         }

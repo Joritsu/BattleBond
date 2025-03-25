@@ -1858,7 +1858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.770508, y: -21.769775}
+  m_AnchoredPosition: {x: 47.770508, y: -21.769714}
   m_SizeDelta: {x: -496.6647, y: -279.3738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540286587
@@ -2083,7 +2083,7 @@ MonoBehaviour:
   speed: 3
   jumpForce: 7
   groundCheck: {fileID: 10537881}
-  groundCheckRadius: 1
+  groundCheckRadius: 1.25
   groundLayer:
     serializedVersion: 2
     m_Bits: 72
@@ -2105,6 +2105,14 @@ MonoBehaviour:
   - {fileID: 495898040}
   patrolSpeed: 2
   waypointTolerance: 1
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleDetectionDistance: 1
+  jumpForce: 5
+  jumpableObstacleHeightThreshold: 0.5
 --- !u!114 &1683471686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3229,7 +3237,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 819c4f6438b8fca46bff6d7972059199, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3281,7 +3289,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 819c4f6438b8fca46bff6d7972059199, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
