@@ -35,7 +35,7 @@ public class EnemyPathfinder : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Target is null or Seeker is busy.");
+            //Debug.LogWarning("Target is null or Seeker is busy.");
         }
 }
 
@@ -49,7 +49,7 @@ public class EnemyPathfinder : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Path error: " + p.errorLog);
+            //Debug.LogError("Path error: " + p.errorLog);
         }
     }
 

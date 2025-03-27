@@ -82,10 +82,10 @@ public class PatrolBehavior : MonoBehaviour
             if (hit.collider != null)
             {
                 float heightDifference = hit.collider.bounds.max.y - groundCheck.position.y;
-                Debug.Log("Detected obstacle with height difference: " + heightDifference);
+                //Debug.Log("Detected obstacle with height difference: " + heightDifference);
                 if (heightDifference > 0 && heightDifference < jumpableObstacleHeightThreshold)
                 {
-                    Debug.Log("Jumping!");
+                    //Debug.Log("Jumping!");
                     Jump();
                 }
             }
