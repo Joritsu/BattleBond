@@ -33,7 +33,12 @@ public class EnemyPathfinder : MonoBehaviour
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
-    }
+        else
+        {
+            Debug.LogWarning("Target is null or Seeker is busy.");
+        }
+}
+
 
     void OnPathComplete(Path p)
     {
@@ -41,6 +46,10 @@ public class EnemyPathfinder : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
+        }
+        else
+        {
+            Debug.LogError("Path error: " + p.errorLog);
         }
     }
 

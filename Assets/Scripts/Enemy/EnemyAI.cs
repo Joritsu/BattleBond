@@ -58,12 +58,12 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            // If the player is not detected, enable patrol and disable pathfinding.
             if (patrol != null)
                 patrol.enabled = true;
-            // if (pathfinder != null)
-            //     pathfinder.enabled = false;
+            if (pathfinder != null)
+                pathfinder.enabled = false;
         }
+
     }
 
     /// <summary>

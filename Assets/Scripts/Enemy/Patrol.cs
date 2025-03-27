@@ -38,6 +38,9 @@ public class PatrolBehavior : MonoBehaviour
 
     void Update()
     {
+
+        //Debug.Log("PatrolBehavior Update running");
+
         // If no waypoints are set, do nothing.
         if (waypoints == null || waypoints.Length == 0)
             return;
@@ -65,33 +68,37 @@ public class PatrolBehavior : MonoBehaviour
             sr.flipX = moveDirection.x < 0;
         }
 
-        // --- Obstacle Detection & Jumping ---
         if (groundCheck != null)
         {
-            // Check if the enemy is grounded.
             bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-            if (isGrounded)
+            //Debug.Log("isGrounded: " + isGrounded);
+
+            // Cast the ray
+            Vector2 rayOrigin = groundCheck.position;
+            Vector2 rayDirection = new Vector2(moveDirection.x, 0);
+            //Debug.Log("Raycasting from " + rayOrigin + " in direction " + rayDirection);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, obstacleDetectionDistance, groundLayer);
+
+            if (hit.collider != null)
             {
-                // Cast a ray from groundCheck in the horizontal movement direction.
-                Vector2 rayOrigin = groundCheck.position;
-                Vector2 rayDirection = new Vector2(moveDirection.x, 0);
-                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, obstacleDetectionDistance, groundLayer);
-
-                // If an obstacle is hit…
-                if (hit.collider != null)
+                float heightDifference = hit.collider.bounds.max.y - groundCheck.position.y;
+                Debug.Log("Detected obstacle with height difference: " + heightDifference);
+                if (heightDifference > 0 && heightDifference < jumpableObstacleHeightThreshold)
                 {
-                    // Calculate how high the obstacle is relative to our ground check.
-                    // hit.collider.bounds.max.y is the highest Y of the obstacle.
-                    float heightDifference = groundCheck.position.y - hit.collider.bounds.max.y;
-
-                    // If the obstacle is below groundCheck and within the jumpable threshold, jump.
-                    if (heightDifference > 0 && heightDifference < jumpableObstacleHeightThreshold)
-                    {
-                        Jump();
-                    }
+                    Debug.Log("Jumping!");
+                    Jump();
                 }
             }
+            else
+            {
+                //Debug.Log("No obstacle detected");
+            }
         }
+        else
+        {
+            //Debug.Log("groundCheck is not assigned");
+        }
+
     }
 
     /// <summary>
