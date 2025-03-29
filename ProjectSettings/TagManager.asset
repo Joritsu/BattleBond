@@ -15,10 +15,17 @@ TagManager:
   - Arena
   - Water
   - UI
+<<<<<<< Updated upstream
   - 
   - 
   - 
   - 
+=======
+  - Grab
+  - weaponLayer
+  - PlayerLayer
+  - Enemy
+>>>>>>> Stashed changes
   - 
   - 
   - 
@@ -44,6 +51,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 3339007027
     locked: 0
   m_RenderingLayers:
   - Default
