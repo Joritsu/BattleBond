@@ -2,61 +2,87 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [Header("Health Settings")]
     public int maxHealth = 100;
     public int currentHealth;
 
-    public HealthBar healthBar;
+    [Header("References")]
+    public HealthBar healthBar;          // If you have a health bar
+    public GameObject damagePopupPrefab; // The prefab for the popup
+    public Canvas uiCanvas;             // Your Screen Space – Overlay canvas
 
-    public GameObject damagePopupPrefab;
-    public Canvas worldSpaceCanvas;
 
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+
+        // Update your HealthBar if you have one
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+        }
     }
 
     void Update()
     {
+        // TEST: Press Space to take 20 damage.
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(20);
+            TakeDamage(10);
         }
+
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0);
-        healthBar.SetHealth(currentHealth);
+        currentHealth = Mathf.Max(currentHealth, 0); // Don’t go below 0
 
-        
-
+        // Update the health bar
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(currentHealth);
+        }
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
         // Show the damage popup above the player.
         ShowDamagePopup(damage);
+
     }
 
-    void ShowDamagePopup(int damage)
+    private void ShowDamagePopup(int damage)
     {
-        // Define the desired spawn position in world space (above the player)
-        Vector3 worldPos = transform.position + new Vector3(0, 2, 0);
+        // 1) Instantiate the popup as a child of the UICanvas
+        GameObject popupObj = Instantiate(damagePopupPrefab, uiCanvas.transform, false);
 
-        // Convert the world space position to a position relative to the canvas
-        Vector3 localPos = worldSpaceCanvas.transform.InverseTransformPoint(worldPos);
-
-        // Instantiate the popup as a child of the world space canvas
-        GameObject popup = Instantiate(damagePopupPrefab, worldSpaceCanvas.transform);
-
-        // Set the popup's local position so it appears near the player
-        RectTransform popupRect = popup.GetComponent<RectTransform>();
-        popupRect.localPosition = localPos;
-
-        // Set the damage text on the popup
-        DamagePopup dp = popup.GetComponent<DamagePopup>();
-        if (dp != null)
+        // 2) Grab the DamagePopup script from the new object
+        DamagePopup popupScript = popupObj.GetComponent<DamagePopup>();
+        if (popupScript != null)
         {
-            dp.SetDamage(damage);
+            // 3) Initialize the popup to follow THIS transform (the player)
+            //    and to use our Screen Space – Overlay canvas.
+            popupScript.InitializePopup(this.transform, uiCanvas, damage);
         }
     }
 
+    // Public method to heal (optional)
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        // Don’t exceed max health
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+    }
+
+
+    // Method to handle when health reaches zero
+    private void Die()
+    {
+        // You can play a death animation, drop loot, etc.
+        Debug.Log(gameObject.name + " has perished!");
+
+        // For simplicity, we just destroy this GameObject
+        Destroy(gameObject);
+    }
 }
