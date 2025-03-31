@@ -36,4 +36,8 @@ public class Spikes_trap : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         yield return state = true;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

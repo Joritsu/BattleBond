@@ -20,7 +20,11 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+<<<<<<< Updated upstream
         value: {x: 10, y: -4.68, z: 0.08818496}
+=======
+        value: {x: 15.7, y: -4.7, z: 0.08818496}
+>>>>>>> Stashed changes
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -29,7 +33,11 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
+<<<<<<< Updated upstream
         value: {x: 10, y: -3.65, z: 0.08818496}
+=======
+        value: {x: 15.7, y: -3.67, z: 0.08818496}
+>>>>>>> Stashed changes
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -87,7 +95,11 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+<<<<<<< Updated upstream
         value: 10
+=======
+        value: 15.7
+>>>>>>> Stashed changes
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -96,7 +108,11 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
+<<<<<<< Updated upstream
         value: 10
+=======
+        value: 15.7
+>>>>>>> Stashed changes
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -117,7 +133,11 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+<<<<<<< Updated upstream
         value: -4.68
+=======
+        value: -4.7
+>>>>>>> Stashed changes
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -126,7 +146,11 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
+<<<<<<< Updated upstream
         value: -3.65
+=======
+        value: -3.67
+>>>>>>> Stashed changes
         inSlope: 0
         outSlope: 0
         tangentMode: 136

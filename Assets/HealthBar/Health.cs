@@ -26,7 +26,11 @@ public class Health : MonoBehaviour
         */
     }
 
+<<<<<<< Updated upstream
     public void TakeDamage(float damage)
+=======
+    public void TakeDamage(int damage)
+>>>>>>> Stashed changes
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
