@@ -25,11 +25,7 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        // TEST: Press Space to take 20 damage.
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(10);
-        }
+
 
     }
 
