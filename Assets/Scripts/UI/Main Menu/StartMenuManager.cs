@@ -12,12 +12,6 @@ public class StartMenuManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public void Settings()
-    {
-        // Loads specific scene when button is pressed
-        SceneManager.LoadScene("Settings");
-    }
-
     // This method will be called when the Quit button is clicked.
     public void QuitGame()
     {
