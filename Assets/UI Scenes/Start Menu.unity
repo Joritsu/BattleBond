@@ -120,6 +120,7 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &44096158
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +244,8 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1 &47967974
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +280,11 @@ RectTransform:
   - {fileID: 114868849}
   - {fileID: 2064685270}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 44096159}
+=======
+  - {fileID: 74789100}
+>>>>>>> Stashed changes
 =======
   - {fileID: 74789100}
 >>>>>>> Stashed changes
@@ -354,8 +361,11 @@ Canvas:
   m_SortingOrder: 0
   m_TargetDisplay: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &111915143
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &74789099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1721,11 @@ CanvasRenderer:
   m_GameObject: {fileID: 1233743342}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1845941454
+=======
+--- !u!1 &1844012363
+>>>>>>> Stashed changes
 =======
 --- !u!1 &1844012363
 >>>>>>> Stashed changes
@@ -1723,9 +1737,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - component: {fileID: 1845941455}
   - component: {fileID: 1845941457}
   - component: {fileID: 1845941456}
+=======
+  - component: {fileID: 1844012364}
+  - component: {fileID: 1844012366}
+  - component: {fileID: 1844012365}
+>>>>>>> Stashed changes
 =======
   - component: {fileID: 1844012364}
   - component: {fileID: 1844012366}
@@ -1739,7 +1759,11 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!224 &1845941455
+=======
+--- !u!224 &1844012364
+>>>>>>> Stashed changes
 =======
 --- !u!224 &1844012364
 >>>>>>> Stashed changes
@@ -1749,7 +1773,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1845941454}
+=======
+  m_GameObject: {fileID: 1844012363}
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 1844012363}
 >>>>>>> Stashed changes
@@ -1759,7 +1787,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Father: {fileID: 47967975}
+=======
+  m_Father: {fileID: 74789100}
+>>>>>>> Stashed changes
 =======
   m_Father: {fileID: 74789100}
 >>>>>>> Stashed changes
@@ -1770,7 +1802,11 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &1845941456
+=======
+--- !u!114 &1844012365
+>>>>>>> Stashed changes
 =======
 --- !u!114 &1844012365
 >>>>>>> Stashed changes
@@ -1780,7 +1816,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1845941454}
+=======
+  m_GameObject: {fileID: 1844012363}
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 1844012363}
 >>>>>>> Stashed changes
@@ -1798,7 +1838,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_text: Battle Bond
+=======
+  m_text: 'Settings
+
+'
+>>>>>>> Stashed changes
 =======
   m_text: 'Settings
 
@@ -1875,7 +1921,11 @@ MonoBehaviour:
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!222 &1845941457
+=======
+--- !u!222 &1844012366
+>>>>>>> Stashed changes
 =======
 --- !u!222 &1844012366
 >>>>>>> Stashed changes
@@ -1885,7 +1935,11 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1845941454}
+=======
+  m_GameObject: {fileID: 1844012363}
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 1844012363}
 >>>>>>> Stashed changes
