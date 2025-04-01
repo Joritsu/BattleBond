@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: fc233c0f2c695ef45b2304d4133f7759
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4851422680908948953
+    second: Trump_pump_Sprite_0
+  - first:
+      213: -1394022024092672854
+    second: Trump_pump_Sprite_1
+  - first:
+      213: -8366044991628322680
+    second: Trump_pump_Sprite_2
+  - first:
+      213: -1846932142210156764
+    second: Trump_pump_Sprite_3
+  - first:
+      213: 4462458931365309652
+    second: Trump_pump_Sprite_4
+  - first:
+      213: 8257155944030996311
+    second: Trump_pump_Sprite_5
+  - first:
+      213: 1258012690103208260
+    second: Trump_pump_Sprite_6
+  - first:
+      213: 8007481060846028945
+    second: Trump_pump_Sprite_7
+  - first:
+      213: 3762116108012030537
+    second: Trump_pump_Sprite_8
+  - first:
+      213: -8753554860461531367
+    second: Trump_pump_Sprite_9
+  - first:
+      213: -2199727491794043832
+    second: Trump_pump_Sprite_10
+  - first:
+      213: -2912335429735842433
+    second: Trump_pump_Sprite_11
+  - first:
+      213: 4913842383152143200
+    second: Trump_pump_Sprite_12
+  - first:
+      213: -3106225014612385689
+    second: Trump_pump_Sprite_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 843
+        width: 211
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5e9de6937b35340800000000000000
+      internalID: 4851422680908948953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 791
+        width: 159
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aac92ecda5077ace0800000000000000
+      internalID: -1394022024092672854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 717
+        width: 225
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888de03c766d5eb80800000000000000
+      internalID: -8366044991628322680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_3
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 605
+        width: 116
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 427ff4b80016e56e0800000000000000
+      internalID: -1846932142210156764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 670
+        width: 134
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dc6cc441c6dded30800000000000000
+      internalID: 4462458931365309652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 350
+        width: 261
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75709f2359f479270800000000000000
+      internalID: 8257155944030996311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 405
+        width: 80
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449098c50eb557110800000000000000
+      internalID: 1258012690103208260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 378
+        width: 113
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19845617999402f60800000000000000
+      internalID: 8007481060846028945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 212
+        width: 110
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94a05ddeaa8b53430800000000000000
+      internalID: 3762116108012030537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_9
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 214
+        width: 65
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91fdb449b30258680800000000000000
+      internalID: -8753554860461531367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 185
+        width: 58
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c74f8308ff871e0800000000000000
+      internalID: -2199727491794043832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 219
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d7fcb5b5e4597d0800000000000000
+      internalID: -2912335429735842433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 110
+        width: 83
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06bda02ec99713440800000000000000
+      internalID: 4913842383152143200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trump_pump_Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 107
+        width: 84
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 760a8938ec874e4d0800000000000000
+      internalID: -3106225014612385689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Trump_pump_Sprite_0: 4851422680908948953
+      Trump_pump_Sprite_1: -1394022024092672854
+      Trump_pump_Sprite_10: -2199727491794043832
+      Trump_pump_Sprite_11: -2912335429735842433
+      Trump_pump_Sprite_12: 4913842383152143200
+      Trump_pump_Sprite_13: -3106225014612385689
+      Trump_pump_Sprite_2: -8366044991628322680
+      Trump_pump_Sprite_3: -1846932142210156764
+      Trump_pump_Sprite_4: 4462458931365309652
+      Trump_pump_Sprite_5: 8257155944030996311
+      Trump_pump_Sprite_6: 1258012690103208260
+      Trump_pump_Sprite_7: 8007481060846028945
+      Trump_pump_Sprite_8: 3762116108012030537
+      Trump_pump_Sprite_9: -8753554860461531367
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
