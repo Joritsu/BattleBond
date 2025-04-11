@@ -9,12 +9,20 @@ public class Gun : MonoBehaviour
     public Transform muzzlePoint;
     [Tooltip("Fire rate (bullets per second).")]
     public float fireRate = 5f;  
+    
+    // Gun will only fire if isEquipped is true.
+    [Tooltip("Whether the gun is currently equipped.")]
+    public bool isEquipped = false;
 
     private float fireCooldown;
 
     void Update()
     {
-        // Fire when the left mouse button is held down and the cooldown has elapsed.
+        // Only fire if the gun is equipped.
+        if (!isEquipped)
+            return;
+
+        // Fire if the fire button is held down and the cooldown has elapsed.
         if (Input.GetButton("Fire1") && fireCooldown <= 0f)
         {
             Fire();
@@ -31,14 +39,24 @@ public class Gun : MonoBehaviour
             return;
         }
         
-        // Instantiate the bullet.
+        // Instantiate the bullet at the muzzle position and rotation.
         GameObject bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
         // Get the Bullet component and set its direction.
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null)
         {
-            // The direction is typically the forward direction of the muzzle. In 2D, that's transform.right.
+            // In 2D, the forward direction is usually the right.
             bulletScript.SetDirection(muzzlePoint.right);
         }
+    }
+
+    /// <summary>
+    /// Sets whether the gun is equipped.
+    /// Call this from your weapon equipping system.
+    /// </summary>
+    /// <param name="equipped">True if equipped, false if dropped.</param>
+    public void SetEquipped(bool equipped)
+    {
+        isEquipped = equipped;
     }
 }

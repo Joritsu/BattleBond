@@ -79,6 +79,10 @@ public class WeaponEquip : MonoBehaviour
             attachment.enabled = true;  // Let the script run in LateUpdate
             attachment.equipPoint = equipPoint;
         }
+        Gun gunComponent = equippedWeapon.GetComponent<Gun>();
+        if (gunComponent != null)
+            gunComponent.SetEquipped(true);
+
         
         // Set physics to Kinematic, etc.
     }
@@ -88,18 +92,36 @@ public class WeaponEquip : MonoBehaviour
     {
         if (equippedWeapon == null)
             return;
-
+        
+        // Get and disable the WeaponAttachment component.
         WeaponAttachment attachment = equippedWeapon.GetComponent<WeaponAttachment>();
         if (attachment != null)
         {
-            attachment.enabled = false;  // Stop following the equip point
+            attachment.enabled = false;
             attachment.equipPoint = null;
         }
 
-        // Unparent, re-enable physics, etc.
+        // Get the Gun component before clearing equippedWeapon.
+        Gun gunComponent = equippedWeapon.GetComponent<Gun>();
+        
+        // Unparent the weapon.
         equippedWeapon.transform.SetParent(null, false);
+        
+        // Re-enable its physics if needed.
+        Rigidbody2D weaponRb = equippedWeapon.GetComponent<Rigidbody2D>();
+        if (weaponRb != null)
+            weaponRb.bodyType = RigidbodyType2D.Dynamic;
+        
+        // Now disable the gun so it doesn't shoot.
+        if (gunComponent != null)
+            gunComponent.SetEquipped(false);
+
+        Debug.Log("Weapon dropped: " + equippedWeapon.name);
+        
+        // Finally, clear the equippedWeapon reference.
         equippedWeapon = null;
     }
+
 
 
     // Optional: Visualize the pickup radius in the Scene view.
