@@ -58,74 +58,49 @@ public class WeaponEquip : MonoBehaviour
     /// then disables its physics.
     /// </summary>
     /// <param name="weapon">The weapon GameObject to equip.</param>
+// In your weapon prefab:
+// 1. Add the WeaponAttachment component in the prefab.
+// 2. Set desiredWorldScale in the Inspector to your chosen value (e.g. 0.75, 1, 1).
+// 3. (Optional) Disable the script so it doesn't run until equipped.
+
+// In your WeaponEquip script, do something like:
+
     public void EquipWeapon(GameObject weapon)
     {
-        if (weapon == null || equipPoint == null)
-        {
-            Debug.LogWarning("EquipWeapon: Weapon or equipPoint is null.");
-            return;
-        }
-        
-        // Drop any weapon already equipped.
         if (equippedWeapon != null)
             DropWeapon();
-
+        
         equippedWeapon = weapon;
 
-        // Disable the weapon's physics so it's not influenced by external forces.
-        Rigidbody2D weaponRb = equippedWeapon.GetComponent<Rigidbody2D>();
-        if (weaponRb != null)
+        // Enable/disable the script instead of adding/removing it:
+        WeaponAttachment attachment = equippedWeapon.GetComponent<WeaponAttachment>();
+        if (attachment != null)
         {
-            weaponRb.bodyType = RigidbodyType2D.Kinematic;
+            attachment.enabled = true;  // Let the script run in LateUpdate
+            attachment.equipPoint = equipPoint;
         }
         
-        // Detach from any previous parent.
-        equippedWeapon.transform.SetParent(null, false);
-        
-        // Add (or get) the WeaponAttachment component so that the weapon follows the equip point.
-        WeaponAttachment attachment = equippedWeapon.GetComponent<WeaponAttachment>();
-        if (attachment == null)
-            attachment = equippedWeapon.AddComponent<WeaponAttachment>();
-        
-        // Set up the attachment properties.
-        attachment.equipPoint = equipPoint;
-        attachment.desiredWorldScale = new Vector3(0.544f, 0.544f, 0.544f);
-        // Optionally adjust offsets for fine-tuning:
-        // attachment.positionOffset = new Vector3(0.1f, -0.05f, 0);
-        // attachment.rotationOffset = new Vector3(0, 0, 10);
-
-        Debug.Log("Equipped weapon: " + equippedWeapon.name);
+        // Set physics to Kinematic, etc.
     }
 
-    /// <summary>
-    /// Drops the currently equipped weapon, unparents it, removes the WeaponAttachment, 
-    /// and re-enables its dynamic physics.
-    /// </summary>
+    // Then, dropping:
     public void DropWeapon()
     {
         if (equippedWeapon == null)
             return;
-        
-        // Remove the WeaponAttachment component (so it no longer updates the transform).
+
         WeaponAttachment attachment = equippedWeapon.GetComponent<WeaponAttachment>();
         if (attachment != null)
         {
-            Destroy(attachment);
+            attachment.enabled = false;  // Stop following the equip point
+            attachment.equipPoint = null;
         }
-        
-        // Unparent the weapon.
+
+        // Unparent, re-enable physics, etc.
         equippedWeapon.transform.SetParent(null, false);
-        
-        // Re-enable its physics.
-        Rigidbody2D weaponRb = equippedWeapon.GetComponent<Rigidbody2D>();
-        if (weaponRb != null)
-        {
-            weaponRb.bodyType = RigidbodyType2D.Dynamic;
-        }
-        
-        Debug.Log("Weapon dropped: " + equippedWeapon.name);
         equippedWeapon = null;
     }
+
 
     // Optional: Visualize the pickup radius in the Scene view.
     void OnDrawGizmosSelected()

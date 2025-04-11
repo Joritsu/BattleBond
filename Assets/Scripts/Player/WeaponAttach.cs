@@ -11,22 +11,21 @@ public class WeaponAttachment : MonoBehaviour
     public Vector3 rotationOffset = Vector3.zero;
     
     [Header("Scale Settings")]
-    [Tooltip("The desired world scale for the weapon (e.g., (0.544, 0.544, 0.544)).")]
-    public Vector3 desiredWorldScale = new Vector3(0.544f, 0.544f, 0.544f);
-    
+    [Tooltip("The desired world scale for the weapon. Set this through the Inspector.")]
+    public Vector3 desiredWorldScale;  // Do not hardcode a value in code if you want it solely set through the Inspector.
+
     void LateUpdate()
     {
         if (equipPoint == null)
             return;
         
-        // Match the equip point's position plus any offset.
+        // Update position: follow the equip point with an optional offset.
         transform.position = equipPoint.position + positionOffset;
         
-        // Match the equip point's rotation plus a rotational offset.
+        // Update rotation: match the equip point's rotation plus any offset.
         transform.rotation = equipPoint.rotation * Quaternion.Euler(rotationOffset);
         
-        // Since the equip point's scale is (1,1,1), the weapon's local scale is the same as its world scale.
-        // Simply set the local scale to your desired value.
+        // Update scale: apply the value as set in the Inspector.
         transform.localScale = desiredWorldScale;
     }
 }

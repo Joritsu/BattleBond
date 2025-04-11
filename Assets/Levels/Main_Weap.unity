@@ -3183,7 +3183,7 @@ GameObject:
   - component: {fileID: 996855312}
   - component: {fileID: 996855311}
   - component: {fileID: 996855310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: golfclub_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3236,8 +3236,8 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 4944574087545068024, guid: 0208e7db5902cd245a3b364866e0f240, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1.29, y: 3.26}
   m_AdaptiveModeThreshold: 0.5
@@ -3272,7 +3272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295cac56981dd07469b8acf6a9507ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipPoint: {fileID: 0}
+  equipPoint: {fileID: 1682913390}
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   desiredWorldScale: {x: 0.75, y: 1, z: 1}
@@ -3337,10 +3337,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5, y: 1.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.8603286, y: 0.85965216}
     oldSize: {x: 1.29, y: 3.26}
     newSize: {x: 1.29, y: 3.26}
     adaptiveTilingThreshold: 0.5
@@ -3383,10 +3383,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5, y: 1.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.8603286, y: 0.85965216}
     oldSize: {x: 1.29, y: 3.26}
     newSize: {x: 1.29, y: 3.26}
     adaptiveTilingThreshold: 0.5
