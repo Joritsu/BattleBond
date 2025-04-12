@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d329e28206800104bba0186a33b916ad
+guid: 6864fb9519607c540ae239daa662823f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6879118450950661895
-    second: Gun_0
+      213: 3045988250339961920
+    second: Trump-shot-AP24195851874181-ezgif.com-webp-to-jpg-converter_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gun_0
+      name: Trump-shot-AP24195851874181-ezgif.com-webp-to-jpg-converter_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 3
-        width: 173
-        height: 123
+        x: 0
+        y: 0
+        width: 2560
+        height: 1707
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 707efb4b8c9877f50800000000000000
-      internalID: 6879118450950661895
+      spriteID: 04ce683ec26854a20800000000000000
+      internalID: 3045988250339961920
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Gun_0: 6879118450950661895
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
