@@ -55,8 +55,8 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+
         }
-        // Show the damage popup above the player.
         ShowDamagePopup(damage, false);
 
     }
@@ -77,13 +77,18 @@ public class Health : MonoBehaviour
     }
 
 
-    // Method to handle when health reaches zero
     private void Die()
     {
-        // You can play a death animation, drop loot, etc.
         Debug.Log(gameObject.name + " has perished!");
-
-        // For simplicity, we just destroy this GameObject
+        GameOverScript gm = FindObjectOfType<GameOverScript>();
+        if (gm == null)
+        {
+            Debug.Log("GameOverScript not found!");
+        }
+        else
+        {
+            gm.ShowGameOver();
+        }
         Destroy(gameObject);
     }
 }
