@@ -18,9 +18,9 @@ TagManager:
   - Grab
   - weaponLayer
   - PlayerLayer
-  - 
-  - 
-  - 
+  - Ground
+  - Background
+  - Bullet
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 991467629
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
