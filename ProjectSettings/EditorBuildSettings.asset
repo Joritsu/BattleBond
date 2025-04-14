@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/UI Scenes/Start Menu.unity
-    guid: 10ed0be994498fc49855fd31da3a0002
+    guid: 03d8c5cfc0a8a7d46839184b01d8b3e0
   - enabled: 1
     path: Assets/Levels/MainGameScene.unity
     guid: 786da1ae12212bb4b97c3d892af364cc
@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Main.unity
     guid: c0cde43927829dc48ba090116e94a578
+  - enabled: 1
+    path: Assets/UI Scenes/Controls.unity
+    guid: 5fb7e096056e90f4f9b2cd6f70f18ecb
+  - enabled: 1
+    path: Assets/UI Scenes/Settings.unity
+    guid: c88c74f394c7a2344bc042f259363938
+  - enabled: 1
+    path: Assets/Levels/Shop.unity
+    guid: e123247bdf3e8214089fe471f261fc7c
+  - enabled: 1
+    path: Assets/Levels/Inventory.unity
+    guid: f195d97eaa5084148be7c9f5f2583ec5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8bb65854f243cca4a8fb909be1e0b23f
+guid: d3c27bc4fcef42b4db702e9d1c33aba6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6299695434204920534
-    second: contract_0
+      213: 2826137658283217071
+    second: Trump_Inventory_Empty_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: contract_0
+      name: Trump_Inventory_Empty_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 8
-        width: 345
-        height: 442
+        x: 0
+        y: 0
+        width: 1536
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6da3fe4ce930d6750800000000000000
-      internalID: 6299695434204920534
+      spriteID: fa053580a35783720800000000000000
+      internalID: 2826137658283217071
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      contract_0: 6299695434204920534
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
