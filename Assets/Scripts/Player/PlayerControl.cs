@@ -23,16 +23,28 @@ public class PlayerControl : MonoBehaviour
     float speedX;
     bool isGrounded;
     float lastJumpTime;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
     {
         // Get horizontal input.
         speedX = Input.GetAxisRaw("Horizontal") * movSpeed;
+
+
+        if (spriteRenderer != null)
+        {
+            if (speedX < 0)
+                spriteRenderer.flipX = true;
+            else if (speedX > 0)
+                spriteRenderer.flipX = false;
+        }
 
         // Ground check using OverlapBoxAll.
         Collider2D[] hits = Physics2D.OverlapBoxAll(groundCheck.position, groundCheckSize, groundCheckAngle);

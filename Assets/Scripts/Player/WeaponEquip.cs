@@ -3,32 +3,30 @@ using UnityEngine;
 public class WeaponEquip : MonoBehaviour
 {
     [Header("Equip Settings")]
-    [Tooltip("The transform where the weapon should be attached (e.g., player's hand)")]
+    [Tooltip("The transform where the weapon should be attached (e.g., player's hand/arm equip point). Make sure its scale is (1,1,1).")]
     public Transform equipPoint;
     
-    [Tooltip("The key used to pick up or drop a weapon")]
+    [Tooltip("The key used to pick up or drop a weapon.")]
     public KeyCode pickupDropKey = KeyCode.Q;
     
-    [Tooltip("The radius within which to search for a weapon")]
+    [Tooltip("The radius within which to search for a weapon.")]
     public float pickupRadius = 1.0f;
     
-    [Tooltip("Layer mask defining which objects are considered weapons")]
+    [Tooltip("Layer mask defining which objects are considered weapons.")]
     public LayerMask weaponLayer;
 
-    // The currently equipped weapon
+    // The currently equipped weapon.
     private GameObject equippedWeapon;
 
     void Update()
     {
         if (Input.GetKeyDown(pickupDropKey))
         {
-            // If a weapon is equipped, drop it.
             if (equippedWeapon != null)
             {
                 Debug.Log("Dropping weapon.");
                 DropWeapon();
             }
-            // Otherwise, attempt to pick one up.
             else
             {
                 Debug.Log("Attempting pickup...");
@@ -38,11 +36,10 @@ public class WeaponEquip : MonoBehaviour
     }
 
     /// <summary>
-    /// Searches for a nearby weapon using an OverlapCircle and equips it if found.
+    /// Uses an OverlapCircle at the equip point to detect a nearby weapon.
     /// </summary>
     void AttemptPickup()
     {
-        // Draw a debug circle in the scene view.
         Collider2D hit = Physics2D.OverlapCircle(equipPoint.position, pickupRadius, weaponLayer);
         if (hit != null)
         {
@@ -57,72 +54,77 @@ public class WeaponEquip : MonoBehaviour
 
     /// <summary>
     /// Equips the specified weapon.
+    /// Adds (or enables) a WeaponAttachment component so the weapon follows the equip point,
+    /// then disables its physics.
     /// </summary>
     /// <param name="weapon">The weapon GameObject to equip.</param>
+// In your weapon prefab:
+// 1. Add the WeaponAttachment component in the prefab.
+// 2. Set desiredWorldScale in the Inspector to your chosen value (e.g. 0.75, 1, 1).
+// 3. (Optional) Disable the script so it doesn't run until equipped.
+
+// In your WeaponEquip script, do something like:
+
     public void EquipWeapon(GameObject weapon)
     {
-        if (weapon == null || equipPoint == null)
-        {
-            Debug.LogWarning("EquipWeapon: Weapon or equipPoint is null.");
-            return;
-        }
-        
-        // If a weapon is already equipped, drop it first.
         if (equippedWeapon != null)
             DropWeapon();
-
+        
         equippedWeapon = weapon;
 
-        // Disable the weapon's physics so it doesn't interfere with the player's movement.
-        Rigidbody2D rb = equippedWeapon.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        // Enable/disable the script instead of adding/removing it:
+        WeaponAttachment attachment = equippedWeapon.GetComponent<WeaponAttachment>();
+        if (attachment != null)
         {
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            attachment.enabled = true;  // Let the script run in LateUpdate
+            attachment.equipPoint = equipPoint;
         }
+        Gun gunComponent = equippedWeapon.GetComponent<Gun>();
+        if (gunComponent != null)
+            gunComponent.SetEquipped(true);
 
-        // Store the weapon's original world scale.
-        Vector3 originalWorldScale = equippedWeapon.transform.lossyScale;
         
-        // Parent the weapon to the equip point while preserving its world transform.
-        equippedWeapon.transform.SetParent(equipPoint, true);
-        
-        // Snap the weapon to the equip point.
-        equippedWeapon.transform.localPosition = Vector3.zero;
-        equippedWeapon.transform.localRotation = Quaternion.identity;
-        
-        // Recalculate the weapon's local scale so its world scale remains the same.
-        Vector3 equipPointScale = equipPoint.lossyScale;
-        equippedWeapon.transform.localScale = new Vector3(
-            originalWorldScale.x / equipPointScale.x,
-            originalWorldScale.y / equipPointScale.y,
-            originalWorldScale.z / equipPointScale.z);
-        
-        Debug.Log("Equipped weapon: " + equippedWeapon.name);
+        // Set physics to Kinematic, etc.
     }
 
-    /// <summary>
-    /// Drops the currently equipped weapon.
-    /// </summary>
+    // Then, dropping:
     public void DropWeapon()
     {
         if (equippedWeapon == null)
             return;
-
-        // Unparent the weapon so that it becomes an independent object.
-        equippedWeapon.transform.SetParent(null, true);
-
-        // Re-enable its physics.
-        Rigidbody2D rb = equippedWeapon.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        
+        // Get and disable the WeaponAttachment component.
+        WeaponAttachment attachment = equippedWeapon.GetComponent<WeaponAttachment>();
+        if (attachment != null)
         {
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            attachment.enabled = false;
+            attachment.equipPoint = null;
         }
 
+        // Get the Gun component before clearing equippedWeapon.
+        Gun gunComponent = equippedWeapon.GetComponent<Gun>();
+        
+        // Unparent the weapon.
+        equippedWeapon.transform.SetParent(null, false);
+        
+        // Re-enable its physics if needed.
+        Rigidbody2D weaponRb = equippedWeapon.GetComponent<Rigidbody2D>();
+        if (weaponRb != null)
+            weaponRb.bodyType = RigidbodyType2D.Dynamic;
+        
+        // Now disable the gun so it doesn't shoot.
+        if (gunComponent != null)
+            gunComponent.SetEquipped(false);
+
         Debug.Log("Weapon dropped: " + equippedWeapon.name);
+        
+        // Finally, clear the equippedWeapon reference.
         equippedWeapon = null;
     }
 
-    // Optional: Visualize the pickup radius in the scene view.
+
+
+    // Optional: Visualize the pickup radius in the Scene view.
     void OnDrawGizmosSelected()
     {
         if (equipPoint != null)

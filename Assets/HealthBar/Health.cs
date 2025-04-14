@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     [Header("References")]
     public HealthBar healthBar;          // If you have a health bar
     public GameObject damagePopupPrefab; // The prefab for the popup
-    public Canvas uiCanvas;             // Your Screen Space – Overlay canvas
+    public Canvas uiCanvas;             // Your Screen Space ï¿½ Overlay canvas
 
 
     void Start()
@@ -25,19 +25,28 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        // TEST: Press Space to take 20 damage.
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(10);
-        }
+        
 
+    }
+
+    
+    // Add or verify a Heal method
+    public void Heal(int amount)
+    {
+        Debug.Log("HEALING");
+        currentHealth += amount;
+        // Neheal daugiau nei max
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        Debug.Log("After Healing, currentHealth = " + currentHealth);
+        healthBar.SetHealth(currentHealth);
+        ShowDamagePopup(amount, true);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0); // Don’t go below 0
-
+        currentHealth = Mathf.Max(currentHealth, 0); // Dont go below 0
+        Debug.Log("After damage, currentHealth = " + currentHealth);
         // Update the health bar
         if (healthBar != null)
         {
@@ -46,13 +55,13 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+
         }
-        // Show the damage popup above the player.
-        ShowDamagePopup(damage);
+        ShowDamagePopup(damage, false);
 
     }
 
-    private void ShowDamagePopup(int damage)
+    private void ShowDamagePopup(int damage, bool healing)
     {
         // 1) Instantiate the popup as a child of the UICanvas
         GameObject popupObj = Instantiate(damagePopupPrefab, uiCanvas.transform, false);
@@ -62,27 +71,24 @@ public class Health : MonoBehaviour
         if (popupScript != null)
         {
             // 3) Initialize the popup to follow THIS transform (the player)
-            //    and to use our Screen Space – Overlay canvas.
-            popupScript.InitializePopup(this.transform, uiCanvas, damage);
+            //    and to use our Screen Space ï¿½ Overlay canvas.
+            popupScript.InitializePopup(this.transform, uiCanvas, damage, healing);
         }
     }
 
-    // Public method to heal (optional)
-    public void Heal(int healAmount)
-    {
-        currentHealth += healAmount;
-        // Don’t exceed max health
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
-    }
 
-
-    // Method to handle when health reaches zero
     private void Die()
     {
-        // You can play a death animation, drop loot, etc.
         Debug.Log(gameObject.name + " has perished!");
-
-        // For simplicity, we just destroy this GameObject
+        GameOverScript gm = FindObjectOfType<GameOverScript>();
+        if (gm == null)
+        {
+            Debug.Log("GameOverScript not found!");
+        }
+        else
+        {
+            gm.ShowGameOver();
+        }
         Destroy(gameObject);
     }
 }

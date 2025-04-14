@@ -8,7 +8,7 @@ public class DamagePopup : MonoBehaviour
 
     [Header("Follow & Canvas")]
     public Transform target;      // Which Transform in the world to follow
-    public Canvas uiCanvas;       // The Screen Space – Overlay canvas
+    public Canvas uiCanvas;       // The Screen Space ï¿½ Overlay canvas
 
     [Header("Movement & Fade")]
     public float moveSpeed = 1f;  // Moves upward in UI coordinates
@@ -32,7 +32,7 @@ public class DamagePopup : MonoBehaviour
 
     void Update()
     {
-        // 1) Continuously follow the target’s current position on-screen
+        // 1) Continuously follow the targetï¿½s current position on-screen
         if (target != null && uiCanvas != null)
         {
             // Convert the target's world position to a screen position
@@ -42,7 +42,7 @@ public class DamagePopup : MonoBehaviour
             RectTransform canvasRect = uiCanvas.GetComponent<RectTransform>();
 
             Vector2 uiPos;
-            // For Screen Space – Overlay, 'camera' can be null or Camera.main, either is fine
+            // For Screen Space ï¿½ Overlay, 'camera' can be null or Camera.main, either is fine
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out uiPos);
 
             // Update the popup's anchored position
@@ -66,17 +66,24 @@ public class DamagePopup : MonoBehaviour
     }
 
     /// <summary>
-    /// Initialize the popup’s target, canvas, and damage text.
+    /// Initialize the popupï¿½s target, canvas, and damage text.
     /// Called immediately after instantiation by the Health script.
     /// </summary>
-    public void InitializePopup(Transform target, Canvas canvas, int damage)
+    public void InitializePopup(Transform target, Canvas canvas, int damage, bool healing)
     {
         this.target = target;
         this.uiCanvas = canvas;
-        SetDamage(damage);
+        if (!healing)
+        {
+            SetDamage(damage, '-');
+        }
+        else
+        {
+            SetDamage(damage, '+');
+        }
     }
 
-    public void SetDamage(int damage)
+    public void SetDamage(int damage, char heal_or_dmg)
     {
         if (damageText != null)
         {
