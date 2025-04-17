@@ -3,40 +3,77 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [Tooltip("If set, this scene name will be loaded when enemies are cleared. Otherwise loads next in build order.")]
+    [Tooltip("If set, this scene name will be loaded when you click Next Level. Otherwise, uses build index.")]
     public string nextSceneName;
 
-    // Prevents loading repeatedly
-    private bool transitionStarted = false;
+    [Tooltip("Drag your WinPanel GameObject here (the panel with 'You Won!' & button).")]
+    public GameObject winPanel;
+
+    bool _winTriggered = false;
+
+    void Start()
+    {
+        // Ensure it's hidden at start
+        if (winPanel != null)
+            winPanel.SetActive(false);
+    }
 
     void Update()
     {
-        // Only check if we haven’t already started the next‐level transition
-        if (transitionStarted) return;
-        
-        // Find all active GameObjects tagged "Enemy"
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if (_winTriggered) return;
+
+        // Count all active GameObjects tagged "Enemy"
+        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        Debug.Log($"[LevelManager] Enemy count: {enemyCount}");
+
+        if (enemyCount == 0)
         {
-            transitionStarted = true;
+            _winTriggered = true;
+            ShowWinScreen();
+        }
+    }
+
+    void ShowWinScreen()
+    {
+        if (winPanel != null)
+        {
+            Debug.Log("[LevelManager] All enemies gone! Showing Win Screen...");
+            // Pause the game
+            Time.timeScale = 0f;
+            winPanel.SetActive(true);
+        }
+        else
+        {
+            // Fallback to auto‐load if no panel assigned
             LoadNextLevel();
         }
     }
 
-    private void LoadNextLevel()
+    /// <summary>
+    /// Called by the Next Level button (or fallback).
+    /// </summary>
+    public void LoadNextLevel()
     {
+        // Unpause
+        Time.timeScale = 1f;
+
         if (!string.IsNullOrEmpty(nextSceneName))
         {
+            Debug.Log($"[LevelManager] Loading scene '{nextSceneName}'");
             SceneManager.LoadScene(nextSceneName);
         }
         else
         {
-            // no name provided → load next build‐index scene
             int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            // wrap around or clamp if you like:
             if (nextIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                Debug.Log($"[LevelManager] Loading scene build index {nextIndex}");
                 SceneManager.LoadScene(nextIndex);
+            }
             else
-                Debug.LogWarning("No next scene in build settings.");
+            {
+                Debug.LogWarning("[LevelManager] No next scene in build settings.");
+            }
         }
     }
 }

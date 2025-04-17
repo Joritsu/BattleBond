@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Inventory.unity
     guid: f195d97eaa5084148be7c9f5f2583ec5
+  - enabled: 1
+    path: Assets/Levels/Level 2.unity
+    guid: d3f97390b2bc68245a1b3cb0981f950e
+  - enabled: 1
+    path: Assets/Levels/Level 3.unity
+    guid: 47843b1f3dc4f7e40bb420269acafe57
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
