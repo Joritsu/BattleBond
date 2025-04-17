@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
         // If this is the *player* dying, trigger Game Over:
         if (CompareTag("Player"))
         {
-            var gm = FindObjectOfType<GameOverScript>();
+            var gm = Object.FindFirstObjectByType<GameOverScript>();
             if (gm != null)
                 gm.ShowGameOver();
         }

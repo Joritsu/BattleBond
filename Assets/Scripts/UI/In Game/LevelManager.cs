@@ -1,79 +1,77 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    [Tooltip("If set, this scene name will be loaded when you click Next Level. Otherwise, uses build index.")]
-    public string nextSceneName;
+    [Tooltip("Build‐index of your Shop scene")]
+    public int shopSceneIndex = 2;
 
-    [Tooltip("Drag your WinPanel GameObject here (the panel with 'You Won!' & button).")]
-    public GameObject winPanel;
+    [Tooltip("Build‐index of your last playable level.  We never go past this.")]
+    public int maxLevelBuildIndex = 4;  // e.g. if your last level is at build‑index 4
 
-    bool _winTriggered = false;
+    [Header("Level Complete UI")]
+    public GameObject levelCompletePanel;  // your “You Win / Level Complete” panel
+    public Button     nextButton;          // the panel’s “Next” button
+
+    bool _levelFinished = false;
 
     void Start()
     {
-        // Ensure it's hidden at start
-        if (winPanel != null)
-            winPanel.SetActive(false);
+        if (nextButton != null)
+            nextButton.onClick.AddListener(OnNextPressed);
     }
 
     void Update()
     {
-        if (_winTriggered) return;
+        if (_levelFinished) return;
 
-        // Count all active GameObjects tagged "Enemy"
+        int idx = SceneManager.GetActiveScene().buildIndex;
+        // skip MainMenu (0) and Shop itself
+        if (idx == 0 || idx == shopSceneIndex) return;
+
         int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        Debug.Log($"[LevelManager] Enemy count: {enemyCount}");
-
         if (enemyCount == 0)
         {
-            _winTriggered = true;
-            ShowWinScreen();
+            _levelFinished = true;
+            ShowLevelCompleteUI();
         }
     }
 
-    void ShowWinScreen()
+    void ShowLevelCompleteUI()
     {
-        if (winPanel != null)
-        {
-            Debug.Log("[LevelManager] All enemies gone! Showing Win Screen...");
-            // Pause the game
-            Time.timeScale = 0f;
-            winPanel.SetActive(true);
-        }
-        else
-        {
-            // Fallback to auto‐load if no panel assigned
-            LoadNextLevel();
-        }
+        if (levelCompletePanel != null)
+            levelCompletePanel.SetActive(true);
     }
 
-    /// <summary>
-    /// Called by the Next Level button (or fallback).
-    /// </summary>
-    public void LoadNextLevel()
+    void OnNextPressed()
     {
-        // Unpause
-        Time.timeScale = 1f;
+        // hide the panel
+        if (levelCompletePanel != null)
+            levelCompletePanel.SetActive(false);
 
-        if (!string.IsNullOrEmpty(nextSceneName))
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // compute desired return index:
+        int desired;
+        if (currentIndex < shopSceneIndex)
         {
-            Debug.Log($"[LevelManager] Loading scene '{nextSceneName}'");
-            SceneManager.LoadScene(nextSceneName);
+            // e.g. from Level1 before shop → go to shopIndex+1
+            desired = shopSceneIndex + 1;
         }
         else
         {
-            int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextIndex < SceneManager.sceneCountInBuildSettings)
-            {
-                Debug.Log($"[LevelManager] Loading scene build index {nextIndex}");
-                SceneManager.LoadScene(nextIndex);
-            }
-            else
-            {
-                Debug.LogWarning("[LevelManager] No next scene in build settings.");
-            }
+            // from any level after shop → just current+1
+            desired = currentIndex + 1;
         }
+
+        // clamp so we never exceed the last level
+        int returnIndex = Mathf.Min(desired, maxLevelBuildIndex);
+
+        Debug.Log($"[LevelManager] NextPressed: current={currentIndex}, shop={shopSceneIndex}, " +
+                  $"desiredReturn={desired}, clampedReturn={returnIndex}");
+
+        ShopManager.Instance.SetNextLevelByBuildIndex(returnIndex);
+        SceneManager.LoadScene(shopSceneIndex);
     }
 }
