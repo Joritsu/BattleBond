@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2877772241493884382}
   - component: {fileID: 3240034711022847408}
   - component: {fileID: 7129241485734015190}
+  - component: {fileID: 6419018219893930301}
   m_Layer: 7
   m_Name: Gun_0
   m_TagString: Untagged
@@ -244,6 +245,19 @@ MonoBehaviour:
   muzzlePoint: {fileID: 4560494721569609526}
   fireRate: 5
   isEquipped: 0
+--- !u!114 &6419018219893930301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592759096753037603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2be233feef8075469d02cbedeabd847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
 --- !u!1 &8690006674416803809
 GameObject:
   m_ObjectHideFlags: 0

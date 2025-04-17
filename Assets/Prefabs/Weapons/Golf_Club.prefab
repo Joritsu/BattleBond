@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2030951985846222927}
   - component: {fileID: 8014342968980687812}
   - component: {fileID: 672916395437718520}
+  - component: {fileID: -4620809709020492226}
   m_Layer: 7
   m_Name: Golf_Club
   m_TagString: Untagged
@@ -226,3 +227,16 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   desiredWorldScale: {x: 0.75, y: 1, z: 1}
+--- !u!114 &-4620809709020492226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083703248529345784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2be233feef8075469d02cbedeabd847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20

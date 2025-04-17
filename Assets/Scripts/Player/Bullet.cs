@@ -2,44 +2,36 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [Tooltip("Bullet speed (units per second)")]
-    public float speed = 20f;
-    
-    [Tooltip("Time in seconds before the bullet is destroyed automatically.")]
-    public float lifeTime = 2f;
-    
-    // The direction of bullet travel (set when the bullet is fired).
+    private int damage = 1;
     private Vector2 direction;
+    public float speed = 10f;
 
-    void Start()
+    public void SetDirection(Vector2 dir)
     {
-        // Destroy bullet after a set lifetime so it doesn't remain in the scene forever.
-        Destroy(gameObject, lifeTime);
+        direction = dir.normalized;
+    }
+    public void SetDamage(int dmg)
+    {
+        damage = dmg;
     }
 
     void Update()
     {
-        // Move the bullet forward.
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
-    /// <summary>
-    /// Set the direction that the bullet will travel.
-    /// </summary>
-    public void SetDirection(Vector2 dir)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        direction = dir.normalized;
-        // Optionally, rotate the bullet to face the direction:
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
-
-    // Detect collisions with target objects.
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Here you can check if the bullet hit an enemy, wall, etc.
-        Debug.Log("Bullet hit: " + collision.gameObject.name);
-        // For now, simply destroy the bullet.
-        Destroy(gameObject);
+        if (other.CompareTag("Enemy"))
+        {
+            var health = other.GetComponent<Health>();
+            if (health != null)
+                health.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
