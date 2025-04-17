@@ -39,15 +39,20 @@ public class Gun : MonoBehaviour
             return;
         }
         
-        // Instantiate the bullet at the muzzle position and rotation.
+        // inside Gun.Fire()
+
         GameObject bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
-        // Get the Bullet component and set its direction.
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null)
         {
-            // In 2D, the forward direction is usually the right.
+            // read the gun’s own damage
+            var stats = GetComponent<WeaponStats>();
+            int dmg = stats != null ? stats.damage : 1;
+            
             bulletScript.SetDirection(muzzlePoint.right);
+            bulletScript.SetDamage(dmg);
         }
+
     }
 
     /// <summary>

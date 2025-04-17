@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Arena
   - Enemy
+  - Trap
   layers:
   - Default
   - TransparentFX
