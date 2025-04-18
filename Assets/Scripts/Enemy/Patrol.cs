@@ -38,7 +38,9 @@ public class PatrolBehavior : MonoBehaviour
 
     void Update()
     {
-
+        var ec = GetComponent<EnemyController>();
+        if (ec != null && ec.isStunned)
+            return;
         //Debug.Log("PatrolBehavior Update running");
 
         // If no waypoints are set, do nothing.

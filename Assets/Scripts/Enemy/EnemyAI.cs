@@ -39,6 +39,9 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        var ec = GetComponent<EnemyController>();
+        if (ec != null && ec.isStunned)
+            return;
         // Calculate distance to the player.
         float distance = Vector2.Distance(transform.position, player.position);
 
