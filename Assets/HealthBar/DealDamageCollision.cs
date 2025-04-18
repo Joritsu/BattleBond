@@ -15,7 +15,7 @@ public class DealDamageOnCollision : MonoBehaviour
     {
         stats = GetComponent<WeaponStats>();
         // start disabled if you want no damage until it's explicitly enabled
-        enabled = false;
+        //enabled = false;
     }
 
     void OnCollisionEnter2D(Collision2D col)
