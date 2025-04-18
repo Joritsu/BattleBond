@@ -17,6 +17,13 @@ public class WeaponEquip : MonoBehaviour
 
     // The currently equipped weapon.
     private GameObject equippedWeapon;
+    private PlayerMeleeAttack handAttack;
+
+    void Start()
+    {
+        // 2) Find it (assumes it’s on this object or a child)
+        handAttack = GetComponentInChildren<PlayerMeleeAttack>();
+    }
 
     void Update()
     {
@@ -83,6 +90,8 @@ public class WeaponEquip : MonoBehaviour
         if (gunComponent != null)
             gunComponent.SetEquipped(true);
 
+        if (handAttack != null)
+            handAttack.enabled = false;
         
         // Set physics to Kinematic, etc.
     }
@@ -120,6 +129,8 @@ public class WeaponEquip : MonoBehaviour
         
         // Finally, clear the equippedWeapon reference.
         equippedWeapon = null;
+        if (handAttack != null)
+            handAttack.enabled = true;
     }
 
 
@@ -132,5 +143,13 @@ public class WeaponEquip : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(equipPoint.position, pickupRadius);
         }
+    }
+
+    /// <summary>
+    /// Returns true if the player currently has a weapon equipped.
+    /// </summary>
+    public bool HasWeapon()
+    {
+        return equippedWeapon != null;
     }
 }

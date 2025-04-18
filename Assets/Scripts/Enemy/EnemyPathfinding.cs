@@ -55,6 +55,9 @@ public class EnemyPathfinder : MonoBehaviour
 
     void FixedUpdate()
     {
+        var ec = GetComponent<EnemyController>();
+        if (ec != null && ec.isStunned)
+            return;
         if (path == null)
             return;
 
