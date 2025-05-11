@@ -8,6 +8,6 @@ public class StartButtonScript : MonoBehaviour
     {
         Debug.Log("Start button clicked!");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("MainGameScene");
     }
 }
