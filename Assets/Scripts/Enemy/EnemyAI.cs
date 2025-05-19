@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
+    private Vector3 originalScale; // Assign this in Inspector
+    private Animator animator;
     [Header("Target & Detection")]
     [Tooltip("Reference to the player's transform.")]
     public Transform player;
@@ -35,10 +37,19 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        originalScale = transform.localScale; // On the child!
     }
 
     void Update()
     {
+        float moveX = rb.linearVelocity.x;
+        if (Mathf.Abs(moveX) > 0.01f)
+        {
+            Vector3 scale = originalScale;
+            scale.x *= moveX < 0 ? -1f : 1f;
+            transform.localScale = scale; // On the child!
+        }
         var ec = GetComponent<EnemyController>();
         if (ec != null && ec.isStunned)
             return;
@@ -66,6 +77,13 @@ public class EnemyAI : MonoBehaviour
             if (pathfinder != null)
                 pathfinder.enabled = false;
         }
+        if (animator != null)
+        {
+            // Use Mathf.Abs so speed is always positive
+            float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
+            animator.SetFloat("Speed", horizontalSpeed);
+
+        }
 
     }
 
@@ -76,15 +94,11 @@ public class EnemyAI : MonoBehaviour
     /// </summary>
     void ChasePlayer()
     {
+
         // Determine horizontal direction toward the player.
         Vector2 direction = (player.position - transform.position).normalized;
 
-        // Flip the enemy sprite using SpriteRenderer.flipX.
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.flipX = direction.x < 0;
-        }
+        
 
         // Perform a raycast from groundCheck in the horizontal direction.
         Vector2 rayOrigin = groundCheck.position;

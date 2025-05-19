@@ -47,11 +47,13 @@ MonoBehaviour:
   items:
   - itemName: Sword
     cost: 10
-    prefab: {fileID: 5004705565390151407, guid: 0920a0b9392136e4cb4002f3fdece3c8, type: 3}
+    prefab: {fileID: 5004705565390151407, guid: b73a6632669d08d4994c177966ba365c, type: 3}
+    icon: {fileID: 0}
   - itemName: Golf Club
     cost: 20
-    prefab: {fileID: 5083703248529345784, guid: 40d70582a4b5b9949bbfbc9915c0cf2e, type: 3}
+    prefab: {fileID: 4336898365073306622, guid: 96d50ac8ab7de0143a9142f861dc65a7, type: 3}
+    icon: {fileID: 0}
   - itemName: Tweet Machine
     cost: 50
     prefab: {fileID: 4592759096753037603, guid: 238517cd22ea2f64bbef57a53c3dd809, type: 3}
-  nextLevelSceneName: Level 2
+    icon: {fileID: 0}

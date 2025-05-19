@@ -1726,6 +1726,14 @@ PrefabInstance:
       propertyPath: items.Array.data[2].icon
       value: 
       objectReference: {fileID: 6879118450950661895, guid: d329e28206800104bba0186a33b916ad, type: 3}
+    - target: {fileID: 4885046343976301286, guid: 6e8be89096517f7419e054f06d52732b, type: 3}
+      propertyPath: items.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 5004705565390151407, guid: 0920a0b9392136e4cb4002f3fdece3c8, type: 3}
+    - target: {fileID: 4885046343976301286, guid: 6e8be89096517f7419e054f06d52732b, type: 3}
+      propertyPath: items.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 5083703248529345784, guid: 40d70582a4b5b9949bbfbc9915c0cf2e, type: 3}
     - target: {fileID: 5977291145554664280, guid: 6e8be89096517f7419e054f06d52732b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 867.88086
@@ -2163,6 +2171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopSceneIndex: 2
+  maxLevelBuildIndex: 4
   levelCompletePanel: {fileID: 0}
   nextButton: {fileID: 0}
 --- !u!4 &915186395

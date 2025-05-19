@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioClip[] damageSounds; // Assign your 3+ damage sounds in the Inspector
+    private AudioSource audioSource;
+
     [Header("Health Settings")]
     public int maxHealth = 100;
     public int currentHealth;
@@ -21,6 +25,10 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
         if (healthBar != null)
             healthBar.SetMaxHealth(maxHealth);
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void Heal(int amount)
@@ -40,6 +48,18 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
             Die();
+
+        if (damageSounds != null && damageSounds.Length > 0 && audioSource != null)
+        {
+            int randomIndex = Random.Range(0, damageSounds.Length);
+
+            // Stop any currently playing sound
+            audioSource.Stop();
+
+            // Assign new clip and play
+            audioSource.clip = damageSounds[randomIndex];
+            audioSource.Play();
+        }
     }
 
     void ShowDamagePopup(int amount, bool healing)
