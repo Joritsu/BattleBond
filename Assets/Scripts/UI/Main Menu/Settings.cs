@@ -12,4 +12,9 @@ public class Settings : MonoBehaviour
     {
         SceneManager.LoadScene("Controls");
     }
+
+    public void SetGlobalVolume(float volume)
+    {
+        AudioListener.volume = Mathf.Clamp01(volume);
+    }
 }

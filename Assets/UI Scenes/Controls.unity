@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 429694960}
   - component: {fileID: 429694959}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick
+  m_text: Space
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1467,7 +1467,7 @@ GameObject:
   - component: {fileID: 823367992}
   - component: {fileID: 823367991}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick
+  m_text: A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1975,6 +1975,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361206124}
   m_CullTransparentMesh: 1
+--- !u!1 &1453549579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1453549580}
+  - component: {fileID: 1453549581}
+  - component: {fileID: 1453549582}
+  m_Layer: 0
+  m_Name: ControlsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1453549580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453549579}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 962.29956, y: 475.03467, z: -11.403978}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1453549581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453549579}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d40589b343332498eb0e24eeeb0bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpRebindButton: {fileID: 700586257}
+  jumpKeyLabel: {fileID: 429694959}
+  moveLeftRebindButton: {fileID: 479629806}
+  moveLeftKeyLabel: {fileID: 823367991}
+  moveRightRebindButton: {fileID: 163003196}
+  moveRightKeyLabel: {fileID: 0}
+--- !u!114 &1453549582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453549579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bdee6d68f0e0447b52ac03480f529b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpRebindButton: {fileID: 700586257}
+  jumpKeyLabel: {fileID: 429694959}
+  moveLeftRebindButton: {fileID: 479629806}
+  moveLeftKeyLabel: {fileID: 823367991}
+  moveRightRebindButton: {fileID: 163003196}
+  moveRightKeyLabel: {fileID: 1499171475}
 --- !u!1 &1499171473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,7 +2056,7 @@ GameObject:
   - component: {fileID: 1499171476}
   - component: {fileID: 1499171475}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2032,7 +2101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick
+  m_text: D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2431,3 +2500,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 406851566}
   - {fileID: 483567346}
+  - {fileID: 1453549580}
