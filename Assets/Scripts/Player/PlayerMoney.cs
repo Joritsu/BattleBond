@@ -40,4 +40,12 @@ public class PlayerMoney : MonoBehaviour
         }
         return false;
     }
+
+    public void ResetMoney()
+    {
+        CurrentMoney = 0;
+        OnMoneyChanged?.Invoke(CurrentMoney);
+        Debug.Log("[PlayerMoney] Reset to 0");
+    }
+
 }

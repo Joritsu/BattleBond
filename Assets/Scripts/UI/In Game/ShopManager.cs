@@ -11,7 +11,7 @@ public class ShopManager : MonoBehaviour
         public string itemName;    // e.g. "DoubleJumpBoots"
         public int cost;           // price in player money
         public GameObject prefab;  // what to spawn next level
-        public Sprite   icon;
+        public Sprite icon;
     }
 
     [Header("Configure your shop items here")]
@@ -67,7 +67,7 @@ public class ShopManager : MonoBehaviour
     public void ProceedToNextLevel()
     {
         Debug.Log($"[ShopManager] ProceedToNextLevel called. nextLevelBuildIndex = {nextLevelBuildIndex}");
-        if (nextLevelBuildIndex >= 0 
+        if (nextLevelBuildIndex >= 0
             && nextLevelBuildIndex < SceneManager.sceneCountInBuildSettings)
         {
             Debug.Log($"[ShopManager] Loading build index {nextLevelBuildIndex}");
@@ -78,6 +78,17 @@ public class ShopManager : MonoBehaviour
             Debug.LogError($"ShopManager: invalid nextLevelBuildIndex = {nextLevelBuildIndex}");
         }
     }
+    
+    /// <summary>
+    /// Clears all purchased flags so the player owns nothing.
+    /// </summary>
+    public void ResetPurchases()
+    {
+        for (int i = 0; i < purchased.Length; i++)
+            purchased[i] = false;
+        Debug.Log("[ShopManager] Purchases cleared");
+    }
+
 
 
 }

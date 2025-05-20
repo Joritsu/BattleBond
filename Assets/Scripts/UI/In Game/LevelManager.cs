@@ -7,12 +7,15 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Build‐index of your Shop scene")]
     public int shopSceneIndex = 2;
 
+    [Tooltip("Build‐index of your Main Menu scene")]
+    public int mainMenuSceneIndex = 0;
+
     [Tooltip("Build‐index of your last playable level.  We never go past this.")]
-    public int maxLevelBuildIndex = 4;  // e.g. if your last level is at build‑index 4
+    public int maxLevelBuildIndex = 4;  // e.g. if your last level is at build-index 4
 
     [Header("Level Complete UI")]
     public GameObject levelCompletePanel;  // your “You Win / Level Complete” panel
-    public Button     nextButton;          // the panel’s “Next” button
+    public Button nextButton;          // the panel’s “Next” button
 
     bool _levelFinished = false;
 
@@ -27,45 +30,44 @@ public class LevelManager : MonoBehaviour
         if (_levelFinished) return;
 
         int idx = SceneManager.GetActiveScene().buildIndex;
-        // skip MainMenu (0) and Shop itself
-        if (idx == 0 || idx == shopSceneIndex) return;
+        // skip MainMenu and Shop itself
+        if (idx == mainMenuSceneIndex || idx == shopSceneIndex) return;
 
-        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        if (enemyCount == 0)
+        // all enemies dead?
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             _levelFinished = true;
-            ShowLevelCompleteUI();
+            levelCompletePanel?.SetActive(true);
         }
-    }
-
-    void ShowLevelCompleteUI()
-    {
-        if (levelCompletePanel != null)
-            levelCompletePanel.SetActive(true);
     }
 
     void OnNextPressed()
     {
         // hide the panel
-        if (levelCompletePanel != null)
-            levelCompletePanel.SetActive(false);
+        levelCompletePanel?.SetActive(false);
 
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
 
-        // compute desired return index:
-        int desired;
-        if (currentIndex < shopSceneIndex)
+        if (currentIndex >= maxLevelBuildIndex)
         {
-            // e.g. from Level1 before shop → go to shopIndex+1
-            desired = shopSceneIndex + 1;
-        }
-        else
-        {
-            // from any level after shop → just current+1
-            desired = currentIndex + 1;
+            // Reset the player’s money
+            if (PlayerMoney.Instance != null)
+                PlayerMoney.Instance.ResetMoney();
+
+            // Reset shop purchases
+            if (ShopManager.Instance != null)
+                ShopManager.Instance.ResetPurchases();
+
+            // Now load your Main Menu
+            SceneManager.LoadScene(mainMenuSceneIndex);
+            return;
         }
 
-        // clamp so we never exceed the last level
+        // otherwise, shop → next level as before
+        int desired = (currentIndex < shopSceneIndex)
+                    ? shopSceneIndex + 1
+                    : currentIndex + 1;
+
         int returnIndex = Mathf.Min(desired, maxLevelBuildIndex);
 
         Debug.Log($"[LevelManager] NextPressed: current={currentIndex}, shop={shopSceneIndex}, " +
@@ -74,4 +76,6 @@ public class LevelManager : MonoBehaviour
         ShopManager.Instance.SetNextLevelByBuildIndex(returnIndex);
         SceneManager.LoadScene(shopSceneIndex);
     }
+    
+    
 }
