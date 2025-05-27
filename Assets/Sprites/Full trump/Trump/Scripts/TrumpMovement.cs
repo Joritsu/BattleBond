@@ -20,11 +20,15 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Components")]
     private Rigidbody2D rb;
-    public Animator animator;  // Assign your Animator component in the Inspector
+    public Animator animator; // Assign your Animator component in the Inspector
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // It's good practice to ensure InputBindings are initialized.
+        // Though GetKey() in InputBindings already calls Initialize(),
+        // you might consider a central initialization point in your game.
+        // For example, in a GameManager script's Awake(): InputBindings.Initialize();
     }
 
     void Update()
@@ -34,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsGrounded", isGrounded);
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(InputBindings.GetKey("Jump")) && isGrounded) // MODIFIED
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             // Optionally trigger a jump animation:
@@ -43,20 +47,20 @@ public class PlayerMovement : MonoBehaviour
 
         // Horizontal input.
         float moveInput = 0f;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(InputBindings.GetKey("MoveLeft"))) // MODIFIED
             moveInput = -1f;
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(InputBindings.GetKey("MoveRight"))) // MODIFIED
             moveInput = 1f;
 
         // Detect double-tap for running.
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(InputBindings.GetKey("MoveLeft"))) // MODIFIED
         {
             float timeSinceLastLeft = Time.time - lastLeftTapTime;
             if (timeSinceLastLeft < doubleTapThreshold)
                 isRunning = true;
             lastLeftTapTime = Time.time;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(InputBindings.GetKey("MoveRight"))) // MODIFIED
         {
             float timeSinceLastRight = Time.time - lastRightTapTime;
             if (timeSinceLastRight < doubleTapThreshold)
