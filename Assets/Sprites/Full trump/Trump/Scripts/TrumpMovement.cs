@@ -47,9 +47,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Horizontal input.
         float moveInput = 0f;
-        if (Input.GetKey(InputBindings.GetKey("MoveLeft"))) // MODIFIED
+        if (Input.GetKey(InputBindings.GetKey("MoveRight"))) // MODIFIED
             moveInput = -1f;
-        else if (Input.GetKey(InputBindings.GetKey("MoveRight"))) // MODIFIED
+        else if (Input.GetKey(InputBindings.GetKey("MoveLeft"))) // MODIFIED
             moveInput = 1f;
 
         // Detect double-tap for running.
